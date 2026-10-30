@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Te invitan a Flipa · Una chispa para ti</title>
+<meta name="description" content="Tu amigo te invita a Flipa: escribe una idea y conviértela en un reel animado con voz y subtítulos. Con su código, ganáis una chispa cada uno.">
+<meta property="og:title" content="Te invitan a Flipa ⚡">
+<meta property="og:description" content="Convierte una idea en un reel animado con voz y subtítulos. Con el código de tu amigo, ganáis una chispa cada uno.">
+<meta property="og:type" content="website">
+<style>
+  :root { color-scheme: dark; --fondo: #110A22; --tarjeta: #1B1233; --borde: #33265A; --texto: #F7F3FF;
+    --suave: #B3A8D6; --lima: #D7FF3A; --rosa: #FF3DA5; --cian: #38E1FF; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.6 system-ui, -apple-system, sans-serif; color: var(--texto);
+    background: radial-gradient(circle at 15% 0%, rgba(255,61,165,.28), transparent 30rem),
+      radial-gradient(circle at 90% 25%, rgba(56,225,255,.18), transparent 28rem), var(--fondo); min-height: 100vh; }
+  main { max-width: 520px; margin: 0 auto; padding: 48px 20px 64px; text-align: center; }
+  .marca { font-weight: 900; font-size: 1.8rem; letter-spacing: -.04em; text-decoration: none; color: var(--texto); }
+  .marca span { color: var(--lima); }
+  h1 { font-size: clamp(1.8rem, 7vw, 2.4rem); line-height: 1.1; letter-spacing: -.03em; margin: 28px 0 10px; }
+  h1 em { font-style: normal; color: var(--lima); }
+  p { color: var(--suave); margin: 0 0 12px; }
+  .tarjeta { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 22px; padding: 22px; margin: 26px 0 18px; }
+  .etiqueta { font-size: .85rem; font-weight: 700; color: var(--suave); letter-spacing: .02em; }
+  .codigo { font-size: 2.6rem; font-weight: 900; letter-spacing: .18em; margin: 6px 0 14px; color: var(--texto); }
+  button, .boton { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%;
+    font: 700 1rem system-ui, -apple-system, sans-serif; border-radius: 16px; padding: 15px 18px; cursor: pointer;
+    text-decoration: none; border: 0; }
+  .copiar { background: var(--lima); color: var(--fondo); }
+  .tienda { background: var(--texto); color: var(--fondo); margin-top: 12px; }
+  .pasos { text-align: left; margin: 22px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+  .pasos li { color: var(--suave); padding-left: 34px; position: relative; }
+  .pasos li::before { content: attr(data-n); position: absolute; left: 0; top: 0; width: 24px; height: 24px;
+    border-radius: 50%; background: var(--borde); color: var(--lima); font-weight: 800; font-size: .85rem;
+    display: grid; place-items: center; }
+  .oculto { display: none; }
+  footer { margin-top: 36px; font-size: .85rem; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+  a { color: var(--lima); }
+</style>
+</head>
+<body>
+<main>
+  <a class="marca" href="./index.html">flipa<span>.</span></a>
+  <h1>Te invitan a Flipa.<br><em>Una chispa para ti.</em></h1>
+  <p>Escribe una idea y Flipa la convierte en un reel animado con voz y subtítulos, listo para subir.</p>
+
+  <section class="tarjeta" id="con-codigo">
+    <div class="etiqueta">El código de tu amigo</div>
+    <div class="codigo" id="codigo">······</div>
+    <button class="copiar" id="copiar" type="button">Copiar el código</button>
+    <a class="boton tienda" href="https://apps.apple.com/app/id6828024861">Descargar Flipa en la App Store</a>
+    <ol class="pasos">
+      <li data-n="1">Descarga Flipa y crea tu cuenta.</li>
+      <li data-n="2">En la bienvenida, escribe el código en «¿Te ha invitado alguien?».</li>
+      <li data-n="3">Ganáis una chispa cada uno: tu primer vídeo, gratis.</li>
+    </ol>
+  </section>
+
+  <section class="tarjeta oculto" id="sin-codigo">
+    <p>Este enlace no trae ningún código, pero puedes descargar Flipa igualmente.</p>
+    <a class="boton tienda" href="https://apps.apple.com/app/id6828024861">Descargar Flipa en la App Store</a>
+  </section>
+
+  <p>El código vale en los primeros 7 días desde que creas la cuenta.</p>
+
+  <footer>
+    <a href="./privacidad.html">Política de Privacidad</a>
+    <a href="./terminos.html">Términos de Uso</a>
+  </footer>
+</main>
+<script>
+  // El código viene en la dirección (?c=ABC234). Solo letras y números: nada de lo que llega se pinta como HTML.
+  const codigo = (new URLSearchParams(location.search).get('c') || '').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 8);
+  if (codigo.length >= 4) {
+    document.getElementById('codigo').textContent = codigo;
+    document.title = 'Te invitan a Flipa · Código ' + codigo;
+  } else {
+    document.getElementById('con-codigo').classList.add('oculto');
+    document.getElementById('sin-codigo').classList.remove('oculto');
+  }
+  const boton = document.getElementById('copiar');
+  boton.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(codigo);
+      boton.textContent = '¡Copiado! Pégalo en Flipa';
+    } catch {
+      boton.textContent = 'Código: ' + codigo;
+    }
+  });
+</script>
+</body>
+</html>
