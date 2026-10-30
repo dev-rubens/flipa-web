@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flipa · Tus ideas en reels animados a 60 fps</title>
+<style>
+  :root { color-scheme: dark; --fondo: #110A22; --tarjeta: #1B1233; --borde: #33265A; --texto: #F7F3FF;
+    --suave: #B3A8D6; --lima: #D7FF3A; --rosa: #FF3DA5; --cian: #38E1FF; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.65 system-ui, -apple-system, sans-serif; color: var(--texto);
+    background: radial-gradient(circle at 15% 0%, rgba(255,61,165,.28), transparent 30rem),
+      radial-gradient(circle at 90% 25%, rgba(56,225,255,.18), transparent 28rem), var(--fondo); min-height: 100vh; }
+  main { max-width: 720px; margin: 0 auto; padding: 64px 20px; }
+  .marca { font-weight: 900; font-size: 1.8rem; letter-spacing: -.04em; text-decoration: none; color: var(--texto); }
+  .marca span { color: var(--lima); }
+  h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.08; letter-spacing: -.03em; margin: 28px 0 12px; }
+  h1 em { font-style: normal; color: var(--lima); }
+  p { color: var(--suave); }
+  .tarjetas { display: grid; gap: 16px; margin-top: 32px; }
+  .tarjeta { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 20px; padding: 22px; }
+  .tarjeta h2 { margin: 0 0 8px; font-size: 1.15rem; }
+  a { color: var(--lima); }
+  footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--borde); display: flex; flex-wrap: wrap; gap: 18px; font-size: .92rem; }
+</style>
+</head>
+<body>
+<main>
+  <a class="marca" href="./index.html">flipa<span>.</span></a>
+  <h1>Dame una idea.<br><em>La hago flipar.</em></h1>
+  <p>Escribe una pregunta, una curiosidad o un tema desde tu iPhone y Flipa crea un reel vertical animado a 60 fps con narración y subtítulos sincronizados.</p>
+
+  <div class="tarjetas">
+    <section class="tarjeta" id="soporte">
+      <h2>Soporte y ayuda al usuario</h2>
+      <p>¿Necesitas ayuda con tu cuenta, tus chispas o una suscripción? Escríbenos a <a href="mailto:rubens.dev.contact@gmail.com">rubens.dev.contact@gmail.com</a> y te responderemos en menos de 48 horas laborables.</p>
+      <p>Recuerda que puedes gestionar tus suscripciones desde <strong>Ajustes de iOS → Tu nombre → Suscripciones</strong> y eliminar tu cuenta junto con todos tus vídeos directamente desde la app en <strong>Mi cuenta → Eliminar mi cuenta y todos mis vídeos</strong>.</p>
+    </section>
+  </div>
+
+  <footer>
+    <a href="./privacidad.html">Política de Privacidad</a>
+    <a href="./terminos.html">Términos de Uso (EULA)</a>
+    <a href="mailto:rubens.dev.contact@gmail.com">rubens.dev.contact@gmail.com</a>
+  </footer>
+</main>
+</body>
+</html>
